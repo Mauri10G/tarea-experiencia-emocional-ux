@@ -9,12 +9,13 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 from openpyxl import load_workbook
-from util import cargar, matriz_valores, momentos_criticos, NOMBRES
+from util import cargar, matriz_valores, momentos_criticos, validar_mismos_participantes, NOMBRES
 from config_momentos import MOMENTOS, TAREA
 
 NAVY = "1F3864"
 SALIDA = "informe/informe_final.docx"
 a = cargar("datos/pruebas_antes.csv"); d = cargar("datos/pruebas_despues.csv")
+validar_mismos_participantes(a, d)
 va, vd = matriz_valores(a), matriz_valores(d); pa, pdv = va.mean(), vd.mean()
 bajo, caida, delta = momentos_criticos(pa)
 npart = va.shape[0]

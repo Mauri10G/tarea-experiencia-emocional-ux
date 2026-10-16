@@ -1,0 +1,16 @@
+participante,momento,valor,emocion_reportada,comentario,evidencia_observada,tiempo_seg
+P1,1,-1,Confusión,"Se ve un poco saturado y los colores del mapa no ayudan a distinguir bien dónde estoy.",Miró fijamente la pantalla intentando entender la distribución de los paneles.,10
+P1,2,-2,Frustración,"Las calles se ven negras y oscuras, me cuesta encontrar la referencia exacta de mi casa en el mapa.",Movió el cursor varias veces sobre el mapa tratando de leer los nombres de las avenidas.,24
+P1,3,-1,Inseguridad,"El aviso de la derecha no me deja claro si el repartidor llegará exactamente al pin o solo a una zona cercana.",Leyó dos veces el bloque de texto del lado derecho frunciendo el ceño.,18
+P1,4,-2,Duda,"No sé qué pasa si le doy a omitir, me da miedo que mi pedido no se guarde o se envíe a otro lado.",Pasó el cursor entre el botón de guardar y omitir dudando unos segundos antes de decidir.,15
+P1,5,-1,Incertidumbre,"Terminé pero no siento que me confirme con claridad cuál es el siguiente paso del pedido.",Se quedó esperando una señal visual más clara tras indicar su decisión.,12
+P2,1,0,Indiferencia,"Parece una pantalla de ubicación normal, aunque el diseño del mapa se ve algo antiguo y oscuro.",Observó la pantalla de forma general de izquierda a derecha sin tocar el mouse.,10
+P2,2,-3,Molestia,"No se distingue nada bien en esas calles negras, así es muy fácil equivocarse de cuadra.",Se acercó bastante al monitor intentando descifrar las calles oscuras del mapa.,28
+P2,3,-1,Desconfianza,"La dirección escrita y el aviso me hacen dudar de si el sistema tomó bien mi ubicación real.",Comparó visualmente el mapa con el texto de la derecha repetidas veces.,20
+P2,4,-2,Ansiedad,"Tener el botón de omitir ahí confunde, no entiendo por qué omitiría confirmar dónde quiero mi entrega.",Señaló los dos botones y preguntó en voz alta cuál era la diferencia real.,16
+P2,5,0,Alivio,"Bueno, ya pasé esta parte, pero espero que en la siguiente pantalla sí me deje revisar todo antes de pagar.",Soltó el mouse y dio por terminada la tarea con gesto de duda.,11
+P3,1,-1,Desorientación,"No sé a dónde mirar primero, el mapa oscuro me distrae de la información de la derecha.",Movió la vista rápidamente entre el mapa y los botones laterales.,10
+P3,2,-2,Estrés,"El contraste del mapa es malo, las avenidas negras hacen que pierda la ubicación de mi dirección.",Intentó hacer zoom o arrastrar sobre la imagen estática buscando mejor visibilidad.,25
+P3,3,-2,Confusión,"El texto del aviso es ambiguo, no me da seguridad de que la dirección esté validada correctamente.",Tardó en leer el panel derecho y volvió a mirar el pin del mapa.,21
+P3,4,-1,Indecisión,"Usaría guardar por lógica, pero el botón de omitir está puesto de una forma que te hace dudar si es obligatorio.",Dudó con el cursor encima de las opciones antes de elegir guardar.,14
+P3,5,-1,Desconcierto,"No queda claro qué sigue después de esto ni si mi ubicación ya quedó fija en el sistema.",Miró hacia las esquinas de la pantalla buscando un indicador de progreso.,13

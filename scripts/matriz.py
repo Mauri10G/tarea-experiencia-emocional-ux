@@ -2,10 +2,11 @@
 Uso: python scripts/matriz.py"""
 import sys
 from collections import Counter
+from pathlib import Path
 import pandas as pd
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, Font, PatternFill, Border, Side
-from util import cargar, matriz_valores
+from util import cargar, matriz_valores, validar_mismos_participantes
 from config_momentos import MOMENTOS
 
 ra = sys.argv[1] if len(sys.argv) > 1 else "datos/pruebas_antes.csv"
@@ -13,11 +14,12 @@ rd = sys.argv[2] if len(sys.argv) > 2 else "datos/pruebas_despues.csv"
 salida = sys.argv[3] if len(sys.argv) > 3 else "matriz/matriz_ux.xlsx"
 
 a = cargar(ra)
-try:
+if Path(rd).is_file():
     d = cargar(rd)
-except SystemExit:
+    validar_mismos_participantes(a, d)
+else:
     d = None
-    print("Aviso. Todavía no hay datos válidos del después. La columna de validación queda pendiente.")
+    print("Aviso. Falta el CSV del después. La columna de validación queda pendiente.")
 
 def textos(df, mid, col):
     s = df[(df["momento"] == mid)][col].dropna().astype(str).str.strip()
