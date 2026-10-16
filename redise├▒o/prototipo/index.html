@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SuperOfertas Ecuador · Rediseño del paso 4 Mapa</title>
+<style>
+:root{--ink:#1f2937;--muted:#4b5563;--line:#d1d5db;--bg:#f8fafc;--card:#fff;--brand:#12326b;--primary:#1d4ed8;--primary-d:#1e40af;--ok:#166534;--ok-bg:#dcfce7;--warn:#92400e;--warn-bg:#fef3c7;--strip:#ecfdf5}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI",Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);width:1366px;margin:0 auto;min-height:100vh;font-size:16px;line-height:1.45}
+header{background:#fff;border-bottom:1px solid var(--line);height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 48px}
+.logo{font-size:26px;font-weight:700;color:var(--brand)}
+header nav a{color:var(--ink);margin-left:28px;text-decoration:none;font-size:15px}
+header nav a:hover{text-decoration:underline}
+.strip{background:var(--strip);color:#14532d;text-align:center;padding:9px;font-size:15px;border-bottom:1px solid #bbf7d0}
+main{padding:28px 48px 40px}
+.steps{display:flex;align-items:center;gap:0;margin-bottom:6px}
+.step{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--muted)}
+.step .dot{width:32px;height:32px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-weight:700;background:#fff;color:var(--muted)}
+.step.done .dot{background:var(--brand);border-color:var(--brand);color:#fff}
+.step.cur .dot{border-color:var(--primary);color:var(--primary);box-shadow:0 0 0 4px #dbeafe}
+.step.cur{color:var(--ink);font-weight:700}
+.bar{flex:1;height:2px;background:var(--line);margin:0 14px;min-width:30px}
+.bar.done{background:var(--brand)}
+.where{font-size:14px;color:var(--muted);margin-bottom:22px}
+h1{font-size:32px;font-weight:700;margin-bottom:6px}
+.lead{color:var(--muted);margin-bottom:22px;font-size:17px}
+.grid{display:flex;gap:32px;align-items:flex-start}
+.mapbox{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;width:833px;flex:none}
+.mapbox svg{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px;flex:1}
+.card .lab{font-size:14px;color:var(--muted);margin-bottom:4px}
+.addr{font-size:22px;font-weight:700;margin-bottom:2px}
+.city{color:var(--muted);margin-bottom:14px}
+.chip{display:inline-block;padding:5px 12px;border-radius:999px;font-size:14px;font-weight:600;background:var(--warn-bg);color:var(--warn)}
+.chip.ok{background:var(--ok-bg);color:var(--ok)}
+.msg{margin-top:14px;padding:12px 14px;border-radius:8px;background:var(--ok-bg);color:var(--ok);font-size:15px;display:none}
+.linkbtn{background:none;border:0;color:var(--primary);font:inherit;text-decoration:underline;cursor:pointer;margin-top:16px;display:inline-block;padding:4px 0}
+.edit{display:none;margin-top:12px}
+.edit input{width:100%;padding:10px 12px;border:2px solid var(--line);border-radius:8px;font:inherit;margin-bottom:8px}
+.actions{display:flex;justify-content:space-between;align-items:center;margin-top:28px;width:833px}
+.btn{font:inherit;font-size:17px;font-weight:700;padding:14px 26px;border-radius:10px;cursor:pointer;border:2px solid transparent}
+.btn.primary{background:var(--primary);color:#fff;min-width:260px}
+.btn.primary:hover{background:var(--primary-d)}
+.btn.sec{background:#fff;color:var(--ink);border-color:var(--line);font-weight:600}
+.btn.sm{padding:9px 16px;font-size:15px;background:var(--primary);color:#fff}
+.right{display:flex;align-items:center;gap:22px}
+.skip{background:none;border:0;font:inherit;font-size:15px;color:var(--muted);text-decoration:underline;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #f59e0b;outline-offset:2px}
+.end{display:none;text-align:center;padding:90px 0}
+.end h1{margin-bottom:10px}
+.note{margin-top:30px;font-size:13px;color:var(--muted);text-align:center}
+</style>
+</head>
+<body>
+<header><div class="logo">SuperOfertas Ecuador</div><nav><a href="#">Ayuda</a><a href="#">Mi cuenta</a></nav></header>
+<div class="strip">Envío gratis incluido en tu pedido</div>
+<main>
+  <ol class="steps" id="steps" style="list-style:none" aria-label="Pasos de la compra">
+    <li class="step done"><span class="dot">✓</span>Carrito</li><span class="bar done"></span>
+    <li class="step done"><span class="dot">✓</span>Domicilio</li><span class="bar done"></span>
+    <li class="step done"><span class="dot">✓</span>Quién recibe</li><span class="bar done"></span>
+    <li class="step cur" aria-current="step" id="s4"><span class="dot">4</span>Mapa</li><span class="bar" id="b4"></span>
+    <li class="step" id="s5"><span class="dot">5</span>Pagar</li>
+  </ol>
+  <p class="where" id="where">Paso 4 de 5</p>
+
+  <section id="view">
+    <h1>Confirma tu dirección de entrega</h1>
+    <p class="lead">Revisa que el punto del mapa sea el lugar donde quieres recibir tu pedido.</p>
+    <div class="grid">
+      <div class="mapbox" aria-label="Mapa ficticio con tu dirección marcada">
+        <svg id="map" width="833" height="444" viewBox="0 0 833 444" role="img"></svg>
+      </div>
+      <aside class="card">
+        <div class="lab">Dirección de entrega</div>
+        <div class="addr" id="addr">Calle Inventada 123, Barrio Ejemplo</div>
+        <div class="city">Ciudad Demo, Provincia Demo</div>
+        <span class="chip" id="chip">Por confirmar</span>
+        <div class="msg" id="msg" role="status">Listo, tu dirección quedó confirmada. Ya puedes pasar al pago.</div>
+        <button class="linkbtn" id="fix">Corregir dirección</button>
+        <div class="edit" id="edit"><label for="newaddr" class="lab">Escribe la dirección correcta</label><input id="newaddr" value="Calle Inventada 123, Barrio Ejemplo"><button class="btn sm" id="saveaddr">Guardar cambio</button></div>
+      </aside>
+    </div>
+    <div class="actions">
+      <button class="btn sec" id="back">← Volver a quién recibe</button>
+      <div class="right"><button class="skip" id="skip">Omitir por ahora</button><button class="btn primary" id="main">Confirmar dirección</button></div>
+    </div>
+  </section>
+
+  <section class="end" id="end">
+    <h1>Paso 5 de 5. Pagar</h1>
+    <p class="lead" id="endtxt">Aquí continúa el pago. La prueba de este paso termina en esta pantalla.</p>
+    <button class="btn sec" id="again">Volver al mapa</button>
+  </section>
+  <p class="note">Prototipo de rediseño con datos ficticios. Mapa ficticio, Ciudad Demo.</p>
+</main>
+<script>
+const svg=document.getElementById('map'),NS='http://www.w3.org/2000/svg';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e}
+el('rect',{width:833,height:444,fill:'#e7e3c6'});
+const xs=[[12,176],[224,440],[489,629],[679,821]],ys=[[12,100],[146,284],[330,432]];
+ys.forEach(y=>xs.forEach(x=>el('rect',{x:x[0],y:y[0],width:x[1]-x[0],height:y[1]-y[0],fill:'#d6d1a8',stroke:'#c4bf92'})));
+[[188,0,24,444],[452,0,25,444],[641,0,26,444],[0,112,833,22],[0,296,833,22]].forEach(r=>el('rect',{x:r[0],y:r[1],width:r[2],height:r[3],fill:'#fff'}));
+el('rect',{x:499,y:159,width:111,height:85,fill:'#a9c58b'});
+const t=(x,y,s,c,w)=>{const e=el('text',{x,y,fill:c||'#374151','font-size':s>0?s:14,'font-family':'Segoe UI,Arial','font-weight':w||400});return e};
+t(30,60).textContent='';
+[['Barrio Ejemplo',32,66,17,'#4b5563'],['Av. Imaginaria',330,128,15,'#111827'],['Calle Inventada',30,312,15,'#111827'],['Sector Lejano',700,420,16,'#4b5563']].forEach(a=>{const e=t(a[1],a[2],a[3],a[4]);e.textContent=a[0]});
+// pin en Calle Inventada 123
+const g=el('g',{transform:'translate(100,262)'});
+el('path',{d:'M0 0 C-22 -26 -26 -40 -26 -50 A26 26 0 1 1 26 -50 C26 -40 22 -26 0 0 Z',fill:'#1d4ed8',stroke:'#fff','stroke-width':3},g);
+el('circle',{cx:0,cy:-50,r:10,fill:'#fff'},g);
+el('rect',{x:34,y:-78,width:182,height:34,rx:8,fill:'#12326b'},g);
+const lb=el('text',{x:46,y:-55,fill:'#fff','font-size':15,'font-weight':700,'font-family':'Segoe UI,Arial'},g);lb.textContent='Calle Inventada 123';
+// zoom
+[[18,372,'+'],[18,404,'−']].forEach(z=>{el('rect',{x:z[0],y:z[1],width:30,height:30,rx:6,fill:'#fff',stroke:'#9ca3af'});const e=el('text',{x:z[0]+9,y:z[1]+22,'font-size':20,fill:'#374151'});e.textContent=z[2]});
+const q=id=>document.getElementById(id);let confirmed=false,done=false;
+function show(end,txt){q('view').style.display=end?'none':'block';q('end').style.display=end?'block':'none';
+ q('s4').className='step '+(end?'done':'cur');q('s4').querySelector('.dot').textContent=end?'✓':'4';q('b4').className='bar'+(end?' done':'');
+ q('s5').className='step'+(end?' cur':'');q('where').textContent=end?'Paso 5 de 5':'Paso 4 de 5';if(txt)q('endtxt').textContent=txt}
+q('main').onclick=()=>{if(!confirmed){confirmed=true;q('chip').textContent='Dirección confirmada ✓';q('chip').className='chip ok';q('msg').style.display='block';q('main').textContent='Continuar a pagar →';q('skip').style.display='none'}else show(true,'Aquí continúa el pago. La prueba de este paso termina en esta pantalla.')};
+q('skip').onclick=()=>show(true,'Omitiste la confirmación. Aquí continuaría el pago.');
+q('again').onclick=()=>show(false);
+q('back').onclick=()=>{};
+q('fix').onclick=()=>{q('edit').style.display=q('edit').style.display==='block'?'none':'block'};
+q('saveaddr').onclick=()=>{q('addr').textContent=q('newaddr').value||q('addr').textContent;q('edit').style.display='none';confirmed=false;q('chip').textContent='Por confirmar';q('chip').className='chip';q('msg').style.display='none';q('main').textContent='Confirmar dirección';q('skip').style.display=''};
+</script>
+</body>
+</html>

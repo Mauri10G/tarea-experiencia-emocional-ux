@@ -1,0 +1,3 @@
+figma=https://www.figma.com/make/JGUWZmfcDiXiW0SdpGYgm6/Pantalla-de-confirmaci%C3%B3n-de-entrega
+repositorio=[URL DEL REPOSITORIO]
+fecha=[FECHA DE ENTREGA]
