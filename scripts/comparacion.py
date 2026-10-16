@@ -4,7 +4,7 @@ import sys
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from util import cargar, matriz_valores, NOMBRES
+from util import cargar, matriz_valores, validar_mismos_participantes, NOMBRES
 import pandas as pd
 
 ra = sys.argv[1] if len(sys.argv) > 1 else "datos/pruebas_antes.csv"
@@ -12,9 +12,9 @@ rd = sys.argv[2] if len(sys.argv) > 2 else "datos/pruebas_despues.csv"
 salida = sys.argv[3] if len(sys.argv) > 3 else "curva_emocional/curva_antes_despues.png"
 resumen = sys.argv[4] if len(sys.argv) > 4 else "datos/resumen_comparacion.csv"
 
-a, d = matriz_valores(cargar(ra)), matriz_valores(cargar(rd))
-if set(a.index) != set(d.index):
-    print("Aviso. Los participantes del antes y del después no son los mismos:", sorted(a.index), sorted(d.index))
+antes, despues = cargar(ra), cargar(rd)
+validar_mismos_participantes(antes, despues)
+a, d = matriz_valores(antes), matriz_valores(despues)
 pa, pd_ = a.mean(axis=0), d.mean(axis=0)
 
 fig, ax = plt.subplots(figsize=(11, 6), dpi=150)
