@@ -8,7 +8,7 @@ MOMENTOS = [
      "mejora": "Quitar el banner rojo y la cuenta regresiva. Usar colores calmados y una barra de progreso.",
      "principio": "Heurística 8 de Nielsen, diseño estético y minimalista. Diseño emocional de Norman, nivel visceral."},
     {"id": 2, "nombre": "Explorar el mapa y ubicar la dirección", "fase": "Durante", "captura": "C03",
-     "mejora": "Dejar un solo pin, con la dirección escrita en una etiqueta junto al punto.",
+     "mejora": "Mejorar el contraste y la legibilidad de calles y avenidas del mapa; mantener un único pin coherente con la dirección escrita.",
      "principio": "Heurística 1 de Nielsen, visibilidad del estado. Heurística 4, consistencia entre pin y dirección."},
     {"id": 3, "nombre": "Leer la dirección y el aviso", "fase": "Durante", "captura": "C04",
      "mejora": "Quitar el aviso de presión, corregir los textos y mostrar la dirección en una tarjeta clara.",
